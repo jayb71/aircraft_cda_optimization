@@ -17,6 +17,21 @@ This project is part of the **Applied Optimization** course and is based on the 
 - **Jay Bharambe** (Roll No: 22159)
 
 
+
+## Results
+
+The optimization results are stored in the `results/` folder. Key outputs include:
+
+- **`cda_results.npz`**: Contains the numerical results of the optimization, including fuel consumption and trajectory data.
+- **`cda_paper_results.png`**: A visual comparison of the optimized trajectory against the baseline from the referenced research paper.
+
+Below is the visualization of the sample result:
+
+![Optimized Trajectory vs Baseline](results/cda_paper_results.png)
+
+These results demonstrate the effectiveness of the optimization in reducing fuel consumption while adhering to the constraints of the CDA procedure.
+
+
 ## How to Run
 
 1. **Clone the repo**:
