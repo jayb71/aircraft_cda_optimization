@@ -30,16 +30,20 @@ def setup_and_solve_optimization():
         J += 0.5 * dt * (F_fuel_k + F_fuel_kp1)
     
     opti.minimize(J)
-    
-    # Constraints
-    opti.subject_to(V[0] == 200)
-    opti.subject_to(d[0] == 0)
-    opti.subject_to(h[0] == 37000 * 0.3048)
-    opti.subject_to(m[0] == m0)
-    opti.subject_to(h[N] >= 5000 * 0.3048 - 200 * 0.3048)  # Relaxed
-    opti.subject_to(h[N] <= 5000 * 0.3048 + 200 * 0.3048)  # Relaxed
-    opti.subject_to(d[N] >= 200 * 1852 - 2 * 1852)
-    opti.subject_to(d[N] <= 200 * 1852 + 2 * 1852)
+        
+    # Constraints: State and control boundary conditions
+    opti.subject_to(V[0] == 200)  # Initial velocity condition
+    opti.subject_to(d[0] == 0)    # Initial distance condition
+    opti.subject_to(h[0] == 37000 * 0.3048)  # Initial altitude in meters (converted)
+    opti.subject_to(m[0] == m0)   # Initial mass condition
+
+    # Relaxed final altitude constraint
+    opti.subject_to(h[N] >= 5000 * 0.3048 - 200 * 0.3048)  # Relaxed lower bound
+    opti.subject_to(h[N] <= 5000 * 0.3048 + 200 * 0.3048)  # Relaxed upper bound
+
+    # Distance constraints at final timestep (relaxed bounds)
+    opti.subject_to(d[N] >= 200 * 1852 - 2 * 1852)  # Relaxed lower bound
+    opti.subject_to(d[N] <= 200 * 1852 + 2 * 1852)  # Relaxed upper bound
     
     for k in range(N+1):
         opti.subject_to(opti.bounded(V_min, V[k], V_max))
