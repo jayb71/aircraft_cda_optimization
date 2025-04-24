@@ -8,11 +8,13 @@ This project implements an optimization for Continuous Descent Approach (CDA) tr
 
 This project is part of the **Applied Optimization** course and is based on the research paper: [Trajectory Specification to Support High-Throughput Continuous Descent Approaches](https://dspace.mit.edu/handle/1721.1/145403).
 
+### Instructor
+- **Prof. Sujit PB**
+
 ### Team Members
 - **Aman Pasi** (Roll No: 22034)
 - **Ashish Raj** (Roll No: 22061)
 - **Jay Bharambe** (Roll No: 22159)
-
 
 
 ## How to Run
